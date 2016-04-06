@@ -1,7 +1,5 @@
 deploy:
   provider: s3
-  access_key_id: "AKIAI5NZVHUYAYOTTCRQ"
-  secret_access_key: "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"
   bucket: "charley.works"
   skip_cleanup: true
   region: "us-west-1"
