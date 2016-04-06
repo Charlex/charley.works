@@ -4,11 +4,11 @@ rvm:
 - 2.0.0
 deploy:
   provider: s3
+  acl: public_read
+  region: us-west-1
+  local-dir: public/
+  skip_cleanup: true
+  bucket: charley.works
   access_key_id: AKIAID4L5TSZ4WABNRSQ
   secret_access_key:
     secure: Np8qnnHoGX4ofWa+xgscnkee/xCb0BFK0q7huclhWFkLBa9LHU/BEBlDFiBJL1xR9ncns9j0ikJ9u7lrHp0JgKk19ZqCuvHjeXwSb/cuMV135arCa+/f8Fndh1WGKTfmTXVbzO2471tQI6CI1jTO9/RbfV2enkXWntUaf0DFM55bfn90WJRUSa2Ab+e5vO8uzNKO2Rhnl8F2Y9of5gipZF3cbzzTA/MGsOGW1vcKA21p1IwUxgQV7TFI0HzkyGtaJmhXGnlEFiuXw71rBRU9vcpabsxkG/44R/zw6oDEya2vh9yq/l01E94DEcg+jzKlpmIFahP5gg/+NLC1qKcPo/tw9/yLg7pYoKXU1J79aWxDibUlwAbChz75u0jsUu7+ojZB5xYvcMtRkjMJPlSbfOBEsfIcXtJNi22gPTj3N0XNwhJ44JENYP0tVdVCnub+NezRd3gIWVFhz3QtYp8oAQ4MRMvsAdFgA0TIgGslm/tw5a1H4cj6r3uVhfcVkAogmQxeC3tSz0ns0s0l+tGfugTzLv2Z0NOcAlmVaOH+qMgZ31FLbawkVlkMC6MTSNKg2mgFr+GYbpi8plArFP/frZAU++x1b8iiNC6X9c+mXI1uIgLjCK9ACgFWyAbB8nls7yIi791EAWlCOBH/fSZL4jD6585k9lfdPMEzApLj94k=
-  bucket: charley.works
-  local-dir: public/
-  acl: public_read
-  skip_cleanup: true
-  region: us-west-1
