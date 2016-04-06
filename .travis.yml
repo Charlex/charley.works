@@ -1,3 +1,4 @@
+language: javascript
 deploy:
   provider: s3
   bucket: "charley.works"
