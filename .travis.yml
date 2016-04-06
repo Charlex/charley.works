@@ -10,5 +10,4 @@ deploy:
   bucket: charley.works
   local-dir: public/
   acl: public_read
-  on:
-    repo: Charlex/charley.works
+  skip_cleanup: true
