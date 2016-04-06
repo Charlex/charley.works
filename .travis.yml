@@ -2,3 +2,10 @@ language: 'ruby'
 script: 'bundle exec rspec spec'
 rvm:
   - 2.0.0
+deploy:
+  provider: s3
+  bucket: "charley.works"
+  skip_cleanup: true
+  region: "us-west-1"
+  access_key_id: S3_KEY
+  secret_access_key: S3_SECRET_KEY
