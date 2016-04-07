@@ -1,2 +1,4 @@
 body { margin: 0; padding: 0; }
 .section-break { width: 100%; height: 40px; background: black; }
+
+#build-status { margin: 30px auto; }
