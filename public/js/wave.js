@@ -4,14 +4,16 @@ function Wave() {
     var WIDTH = window.innerWidth;
     var HEIGHT = window.innerHeight;
 
+    var REVERSE = false;
+
     /** Wave settings */
-    var DENSITY = .75;
-    var FRICTION = 1.3;
+    var DENSITY = .2;
+    var FRICTION = 1.2;
     var MOUSE_PULL = 0.09; // The strength at which the mouse pulls particles within the AOE
     var AOE = 200; // Area of effect for mouse pull
-    var DETAIL = Math.round( WIDTH / 60 ); // The number of particles used to build up the wave
-    var WATER_DENSITY = 1.07;
-    var AIR_DENSITY = 1.02;
+    var DETAIL = Math.round( WIDTH / 50 ); // The number of particles used to build up the wave
+    var WATER_DENSITY = 1.1;
+    var AIR_DENSITY = 0.5;
     var TWITCH_INTERVAL = 150; // The interval between random impulses being inserted into the wave to keep it moving
 
     var mouseIsDown = false;
@@ -25,7 +27,8 @@ function Wave() {
     /**
      * Constructor.
      */
-    this.Initialize = function( canvasID ) {
+    this.Initialize = function( canvasID, reverse ) {
+        REVERSE = reverse;
         canvas = document.getElementById( canvasID );
 
         if (canvas && canvas.getContext) {
@@ -37,10 +40,10 @@ function Wave() {
             for( var i = 0; i < DETAIL+1; i++ ) {
                 particles.push( {
                     x: WIDTH / (DETAIL-4) * (i-2), // Pad by two particles on each side
-                    y: HEIGHT*.5,
-                    original: {x: 0, y: HEIGHT * .5},
+                    y: HEIGHT*.9,
+                    original: {x: 0, y: HEIGHT * .9},
                     velocity: {x: 0, y: Math.random()*3}, // Random for some initial movement in the wave
-                    force: {x: 0, y: 0},
+                    force: {x: -10, y: 0},
                     mass: 10
                 } );
             }
@@ -133,8 +136,13 @@ function Wave() {
         }
 
         context.lineTo(particles[particles.length-1].x, particles[particles.length-1].y);
-        context.lineTo(WIDTH, 0);
-        context.lineTo(0, 0);
+        if(REVERSE) {
+            context.lineTo(WIDTH, 0);
+            context.lineTo(0, 0);
+        } else {
+            context.lineTo(WIDTH, HEIGHT);
+            context.lineTo(0, HEIGHT);
+        }
         context.lineTo(particles[0].x, particles[0].y);
 
         context.fill();
@@ -211,5 +219,13 @@ function Wave() {
 
 }
 
-var wave = new Wave();
-wave.Initialize( 'world' );
+$(".section-break").each(function(i, e){
+    var id = "section-break-" + i;
+    $(this).html("<canvas></canvas>");
+    $(this).attr("id", id);
+    var reverse = $(this).attr("data-reverse");
+    if(reverse == "true") { reverse = true; } else { reverse = false; }
+    var canvas = $(this).find("canvas");
+    $(canvas).attr("id", id + "-canvas");
+    new Wave().Initialize( id + "-canvas", reverse );
+});

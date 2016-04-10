@@ -1,6 +1,16 @@
 body { margin: 0; padding: 0; background: white; color: black; }
-.section-break { width: 100%; height: 200px;  }
-.section-break canvas { width:100%; height: 200px; }
+.section-break { width: 100%; height: 100px;  }
+.section-break canvas { width:100%; height: 100px; }
 #build-status { margin: 30px auto; width: 100px; display: block; }
-h1 { font-family: "Helvetica"; font-size: 70px; text-align: center; }
-header { max-width: 700px; margin: 0 auto; padding: 0 30px; }
+h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; text-align: center; }
+h1 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; font-size: 40px; }
+h2 { font-weight: bold; font-size: 22px; }
+h3 { font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 20px; line-height: 26px;}
+header { max-width: 700px; margin: 100px auto 200px auto; padding: 0 30px; }
+
+.black-section { background: black; color: white; padding:20px; }
+.section-container { margin: 0 auto; max-width: 580px; }
+.underline {
+    text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 3px 0 0 #000, -3px 0 0 #000;
+    box-shadow: inset 0 -1px 0 0 #000, inset 0 -3px 0 0 #fff;
+}
